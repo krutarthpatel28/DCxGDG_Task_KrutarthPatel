@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>My Favorite Ghibli Films</title>
+<link rel="stylesheet" href="/style/styles.css" />
+<script type="text/javascript" src="/js/darkmode.js" defer></script>
+<style>
+.favorites-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.favorites-section h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.favorite-card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border: 2px solid var(--color-secondary);
+  transition: transform 0.3s;
+}
+.favorite-card:hover {
+  transform: translateY(-5px);
+}
+.favorite-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--color-primary);
+}
+.favorite-rating {
+  font-size: 1rem;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+}
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+.remove-btn:hover {
+  background-color: #c82333;
+}
+.no-favorites {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+.darkmode .favorite-card {
+  background-color: var(--color-light);
+  border-color: var(--color-secondary);
+}
+</style>
+</head>
+<body>
+<!-- Navbar -->
+<%- include('partials/navbar') %>
+<div class="favorites-section noto-sans-body">
+  <h2 class="mozilla-headline-Title">My Favorite Films</h2>
+  
+  <% if (favorites.length === 0) { %>
+    <div class="no-favorites">
+      No favorite films yet. Go to <a href="/explore" style="color: var(--color-primary);">Explore</a> to add some!
+    </div>
+  <% } else { %>
+    <div class="favorites-grid">
+      <% favorites.forEach(favorite => { %>
+        <div class="favorite-card">
+          <div class="favorite-title"><%= favorite.title %></div>
+          <div class="favorite-rating">Rating: <%= favorite.rating %>/5 ⭐</div>
+          <button class="remove-btn" onclick="removeFavorite(<%= favorite.id %>)">
+            Remove from Favorites
+          </button>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<script>
+async function removeFavorite(id) {
+  try {
+    const response = await fetch(`/api/favorite/${id}`, {
+      method: 'DELETE'
+    });
+    
+    if (response.ok) {
+      location.reload(); // Refresh the page to show updated list
+    } else {
+      alert('Failed to remove favorite');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Failed to remove favorite');
+  }
+}
+</script>
+</body>
+</html>

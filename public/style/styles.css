@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --color-primary: #315098;
+  --color-secondary: #8ca8be;
+  --color-accent: #afbdb0;
+  --color-light: #e4c0be;
+  --color-hover: #d9a89f;
+  --color-white: #ffffff;
+  --color-dark: #333;
+}
+
+.darkmode {
+  --color-primary: #d1d5db;     /* Light gray text */
+  --color-secondary: #4b5563;   /* Dark gray accent */
+  --color-accent: #9ca3af;      /* Muted accent */
+  --color-light: #1f2937;       /* Soft dark bg */
+  --color-hover: #374151;       /* Hover bg */
+  --color-white: #111827;       /* Page background */
+  --color-dark: #e5e7eb;        /* For text that used to be dark */
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mozilla-headline-Title {
+  font-family: "Mozilla Headline", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.noto-sans-body {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+#updateNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 15px;
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+#updateNav-button {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  transition: background-color 0.3s;
+}
+
+#updateNav-button:hover {
+  background-color: var(--color-hover);
+  cursor: pointer;
+}
+
+/* Main Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Left side */
+.left-flex {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+#logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--color-primary);
+}
+
+/* Nav links */
+.nav-link {
+  font-size: 1rem;
+  color: var(--color-dark);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* Right side buttons */
+.right-flex {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  border: 2px solid #315098;
+  border-radius: 20px;
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+#Hero-section {
+  text-align: center;
+}
+
+#Hero-section h1 {
+  font-weight: 900;
+  font-size: 5rem;
+}
+#Hero-section h2 {
+  font-weight: normal;
+}
+
+#Hero-section button {
+  height: 2.3rem;
+  width: auto;
+  border-radius: 20px;
+  border: none;
+  font-size: 1.2rem;
+  background-color: black;
+  color: var(--color-white);
+  transition: all 0.3s;
+}
+
+#Hero-section button:hover {
+  color: var(--color-light);
+  background-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  /* Stack left and right sections */
+  .left-flex,
+  .right-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Resize text and buttons */
+  #logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+
+  .nav-btn {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  
+  #updateNav {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  #updateNav-button {
+    font-size: 0.7rem;
+    padding: 4px 12px;
+  }
+
+  #Hero-section h1 {
+    font-weight: 900;
+    font-size: 2rem;
+  }
+  #Hero-section h2 {
+    font-size: 1.5rem;
+  }
+}
