@@ -47,8 +47,7 @@ A beautiful, interactive web application dedicated to Studio Ghibli films. Explo
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ghibliverse.git
-   cd ghibliverse
+   git clone https://github.com/krutarthpatel28/DCxGDG_Task_KrutarthPatel
    ```
 
 2. **Install dependencies**
